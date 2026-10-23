@@ -1,3 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    /* Tipografías de Uapa Salón */
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-logo: 'Great Vibes', cursive;
+
+    /* Paleta de colores: Borgoña y marfil elegante */
+    --color-primary: #E8C5C8;
+    --color-pink-light: #F7E9E8;
+    --color-pink-accent: #C88D98;
+
+    /* Colores de contraste */
+    --color-pink-strong: #7D304A;
+    --color-gold: #B79A62;
+    --color-bg-warm: #FAF6F0;
+
+    /* Variables semánticas adicionales */
+    --color-surface: #FFFFFF;
+    --color-text: #33252A;
+    --color-text-muted: #77676C;
+    --color-border: #E6D9D5;
+    --color-focus: #B79A62;
+}
+
+@layer base {
+
+    /* Estilos base compartidos para checkboxes y radio buttons */
+    input[type="checkbox"],
+    input[type="radio"] {
+        @apply appearance-none w-5 h-5 border-2 border-gold bg-white cursor-pointer focus:ring-2 focus:ring-gold focus:outline-none;
+    }
+
+    /* Redondeo específico para cada uno */
+    input[type="checkbox"] {
+        @apply rounded;
+    }
+
+    input[type="radio"] {
+        @apply rounded-full;
+    }
+
+    /* Diseño del checkbox marcado (Palometa gruesa color pink-900) */
+    input[type="checkbox"]:checked {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' stroke='%23831843' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 8.5l3 3 6-6'/%3E%3C/svg%3E");
+        background-size: 85% 85%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* Diseño del radio button marcado (Círculo color pink-900) */
+    input[type="radio"]:checked {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23831843' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='4'/%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+@layer components {
+
+    /* Etiquetas de formulario */
+    .form-label {
+        @apply block text-sm font-medium text-slate-700 mb-1;
+    }
+
+    /* Campos de texto (inputs) */
+    .form-input {
+        @apply w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-gold focus:outline-none;
+    }
+
+    /* Botón principal */
+    .btn-primary {
+        @apply w-full py-2.5 bg-pink-strong hover:bg-pink-900 text-white font-semibold rounded-lg transition shadow-sm cursor-pointer;
+    }
+
+    /* Enlaces */
+    .link-primary {
+        @apply text-sm font-medium text-pink-strong hover:text-pink-900 transition-colors;
+    }
+}
