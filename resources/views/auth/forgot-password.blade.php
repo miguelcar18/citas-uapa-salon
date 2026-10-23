@@ -1,25 +1,36 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('auth.master')
+
+@section('page-title')
+{{ __('Recover password') }}
+@endsection
+
+@section('card-title')
+{{ __('Recover password') }}
+@endsection
+
+@section('page-content')
+
+<div class="mb-4 text-sm text-center text-slate-800">
+    {{ __('We will send a link to the email address you provide so that you can reset your password') }}
+</div>
+
+<form method="POST" action="{{ route('password.email') }}" class="space-y-4">
+    @csrf
+    <div>
+        <label for="email" class="form-label">{{ __('Email') }}</label>
+        <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus class="form-input">
+        @error('email')
+            <span class="text-sm text-red-600 mt-1 block">{{ $message }}</span>
+        @enderror
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <button type="submit" class="btn-primary">
+        {{ __('Send mail') }}
+    </button>
+</form>
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+<div class="mt-6 text-center">
+    <a href="{{ route('login') }}" class="link-primary">{{ __('Back to login') }}</a>
+</div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection

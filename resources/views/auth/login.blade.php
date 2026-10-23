@@ -10,21 +10,15 @@
 
 @section('page-content')
 
-@if ($errors->any())
-    <div class="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-200">
-        {{ $errors->first() }}
-    </div>
-@endif
-
 <form method="POST" action="{{ route('login') }}" class="space-y-4">
     @csrf
     <div>
-        <label class="form-label">{{ __('Email') }}</label>
+        <label for="email" class="form-label">{{ __('Email') }}</label>
         <input type="email" name="email" value="{{ old('email') }}" required autofocus class="form-input">
     </div>
 
     <div>
-        <label class="form-label">{{ __('Password') }}</label>
+        <label for="password" class="form-label">{{ __('Password') }}</label>
         <input type="password" name="password" required class="form-input">
     </div>
 

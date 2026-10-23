@@ -1,8 +1,26 @@
 {
+    "Already registered?": "¿Ya estás registrado?",
+    "Back to login": "Regresar al login",
+    "Confirm Password": "Confirmar contraseña",
+    "Confirm your password before continuing": "Confirma tu contraseña para continuar",
+    "Confirm": "Confirmar",
+    "Email Password Reset Link": "Enviar enlace para restablecer la contraseña",
     "Email": "Correo",
     "Forgot your password?": "¿Olvidaste tu contraseña?",
     "Log in": "Iniciar sesión",
+    "Log out": "Cerrar sesión",
+    "Name": "Nombre",
     "Password": "Contraseña",
-    "Register": "Registrarse",
-    "Remember me": "Recuerdame"
+    "Recover password": "Recuperar contraseña",
+    "Register": "Registrate",
+    "Reject": "Rechazar",
+    "Remember me": "Recuerdame",
+    "Resend verification email": "Reenviar correo",
+    "Reset Password": "Restablecer contraseña",
+    "Restore password": "Restaurar contraseña",
+    "Send mail": "Enviar correo",
+    "This is a secure area of the application. Please confirm your password before continuing": "Esta es una zona segura de la aplicación. Por favor, confirme su contraseña antes de continuar",
+    "Verify email": "Verificar correo electrónico",
+    "We have sent you a verification link. Click on it to activate your account, or request a new one if you didn't receive it": "Te hemos enviado un enlace de verificación. Haz clic en él para activar tu cuenta o solicita uno nuevo si no lo recibiste",
+    "We will send a link to the email address you provide so that you can reset your password": "Enviaremos un enlace al correo electrónico que indiques para que reestablezcas tu contraseña"
 }

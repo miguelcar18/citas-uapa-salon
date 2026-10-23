@@ -18,8 +18,21 @@
     @yield('screen')
 
     <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-md border border-slate-200">
-        <img src="images/logo.jpg" alt="Logo Uapa Salón" class="block mx-auto h-30 w-30 object-contain mb-10 rounded-lg shadow-sm">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Logo Uapa Salón" class="block mx-auto h-30 w-30 object-contain mb-10 rounded-lg shadow-sm">
         <h1 class="font-logo text-5xl mb-6 text-center text-slate-900 font-normal">@yield('card-title')</h1>
+
+        @if ($errors->any())
+            <div class="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-200">
+                {{ $errors->first() }}
+            </div>
+        @endif
+
+        @if (session('status'))
+            <div class="mb-4 p-3 bg-green-50 text-green-900 font-medium text-sm text-center rounded-lg border border-green-700">
+                {{ session('status') }}
+            </div>
+        @endif
+
         @yield('page-content')
     </div>
 

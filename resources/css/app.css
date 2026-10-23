@@ -77,6 +77,11 @@
         @apply w-full py-2.5 bg-pink-strong hover:bg-pink-900 text-white font-semibold rounded-lg transition shadow-sm cursor-pointer;
     }
 
+    /* Botón secundario */
+    .btn-secondary {
+        @apply w-full py-2.5 bg-gray-200 hover:bg-gray-300 text-slate-800 font-semibold rounded-lg transition shadow-sm cursor-pointer;
+    }
+
     /* Enlaces */
     .link-primary {
         @apply text-sm font-medium text-pink-strong hover:text-pink-900 transition-colors;
