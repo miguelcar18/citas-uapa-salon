@@ -1,0 +1,3 @@
+<footer class="mt-auto pt-6 border-t border-slate-200 dark:border-slate-700/60 text-center text-sm text-slate-500 dark:text-slate-400">
+    &copy; {{ date('Y') }} {{ config('app.name', 'Uapa Salón') }}. Desarrollado por <a href="https://miguelcarmona.dev" target="_blank" rel="noopener noreferrer" class="font-medium hover:text-pink-strong dark:hover:text-pink-300 transition-colors">Miguel Carmona</a>.
+</footer>
