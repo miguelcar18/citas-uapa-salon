@@ -14,12 +14,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('styles')
 </head>
-<body class="font-sans bg-bg-warm text-slate-800 flex items-center justify-center min-h-screen">
+<body class="font-sans bg-bg-warm text-slate-800 flex items-center justify-center min-h-dvh p-4">
     @yield('screen')
 
-    <div class="max-w-md w-full bg-white p-8 rounded-xl shadow-md border border-slate-200">
-        <img src="{{ asset('images/logo.jpg') }}" alt="Logo Uapa Salón" class="block mx-auto h-30 w-30 object-contain mb-10 rounded-lg shadow-sm">
-        <h1 class="font-logo text-5xl mb-6 text-center text-slate-900 font-normal">@yield('card-title')</h1>
+    <div class="max-w-md w-full bg-white p-6 sm:p-8 rounded-xl shadow-md border border-slate-200">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Logo Uapa Salón" class="block mx-auto h-30 w-30 object-contain mb-4 sm:mb-10 rounded-lg shadow-sm">
+        <h1 class="font-logo text-5xl mb-4 sm:mb-6 text-center text-slate-900 font-normal">@yield('card-title')</h1>
 
         @if ($errors->any())
             <div class="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-200">
