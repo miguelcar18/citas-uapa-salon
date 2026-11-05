@@ -1,78 +1,72 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Contraer/Expandir Sidebar
-    const sidebarBtn = document.getElementById('sidebar-toggle');
+    // --- 1. Toggle Sidebar (Colapsar / Expandir) ---
     const sidebar = document.getElementById('sidebar');
-    const menuTexts = document.querySelectorAll('.menu-text');
-    const logoText = document.getElementById('logo-text');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebarTexts = document.querySelectorAll('.sidebar-text');
 
-    sidebarBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('w-64');
-        sidebar.classList.toggle('w-20');
-
-        menuTexts.forEach(text => text.classList.toggle('hidden'));
-
-        // Ocultar texto del logo al contraer
-        if (sidebar.classList.contains('w-20')) {
-            logoText.classList.add('opacity-0', 'w-0');
+    sidebarToggle.addEventListener('click', () => {
+        // Alternar el ancho de w-64 a w-20
+        if (sidebar.classList.contains('w-64')) {
+            sidebar.classList.remove('w-64');
+            sidebar.classList.add('w-20');
+            sidebarTexts.forEach(el => el.classList.add('hidden')); // Ocultar textos
         } else {
-            logoText.classList.remove('opacity-0', 'w-0');
+            sidebar.classList.remove('w-20');
+            sidebar.classList.add('w-64');
+            sidebarTexts.forEach(el => el.classList.remove('hidden')); // Mostrar textos
         }
     });
 
-    // 2. Dropdowns (Notificaciones y Perfil)
-    const notifBtn = document.getElementById('notif-btn');
-    const notifDrop = document.getElementById('notif-dropdown');
-    const profileBtn = document.getElementById('profile-btn');
-    const profileDrop = document.getElementById('profile-dropdown');
-
-    const closeAllDropdowns = () => {
-        notifDrop.classList.add('hidden');
-        profileDrop.classList.add('hidden');
-    };
-
-    notifBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isHidden = notifDrop.classList.contains('hidden');
-        closeAllDropdowns();
-        if (isHidden) notifDrop.classList.remove('hidden');
-    });
-
-    profileBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isHidden = profileDrop.classList.contains('hidden');
-        closeAllDropdowns();
-        if (isHidden) profileDrop.classList.remove('hidden');
-    });
-
-    document.addEventListener('click', closeAllDropdowns);
-    notifDrop.addEventListener('click', (e) => e.stopPropagation());
-    profileDrop.addEventListener('click', (e) => e.stopPropagation());
-
-    // 3. Modo Oscuro - Lógica forzada y explícita
+    // --- 2. Lógica del Tema (Oscuro / Claro) ---
     const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeIconLight = document.getElementById('theme-icon-light');
-    const themeIconDark = document.getElementById('theme-icon-dark');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-    function applyTheme(isDark) {
-        if (isDark) {
-            document.documentElement.classList.add('dark');
-            themeIconLight.classList.remove('hidden'); // Muestra el Sol
-            themeIconDark.classList.add('hidden');     // Oculta la Luna
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeIconLight.classList.add('hidden');    // Oculta el Sol
-            themeIconDark.classList.remove('hidden');  // Muestra la Luna
-        }
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        lightIcon.classList.remove('hidden');
+    } else {
+        document.documentElement.classList.remove('dark');
+        darkIcon.classList.remove('hidden');
     }
 
-    // Comprobar preferencia al cargar
-    const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    applyTheme(isDarkMode);
-
-    // Cambiar tema al hacer clic
     themeToggleBtn.addEventListener('click', () => {
-        const isCurrentlyDark = document.documentElement.classList.contains('dark');
-        localStorage.theme = !isCurrentlyDark ? 'dark' : 'light';
-        applyTheme(!isCurrentlyDark);
+        darkIcon.classList.toggle('hidden');
+        lightIcon.classList.toggle('hidden');
+
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // --- 3. Lógica de Dropdowns ---
+    const notiBtn = document.getElementById('noti-toggle');
+    const notiDropdown = document.getElementById('noti-dropdown');
+    const profileBtn = document.getElementById('profile-toggle');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    function toggleMenu(button, menu, otherMenu) {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('hidden');
+            if (!otherMenu.classList.contains('hidden')) {
+                otherMenu.classList.add('hidden');
+            }
+        });
+    }
+
+    toggleMenu(notiBtn, notiDropdown, profileDropdown);
+    toggleMenu(profileBtn, profileDropdown, notiDropdown);
+
+    notiDropdown.addEventListener('click', (e) => e.stopPropagation());
+    profileDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    window.addEventListener('click', () => {
+        if (!notiDropdown.classList.contains('hidden')) notiDropdown.classList.add('hidden');
+        if (!profileDropdown.classList.contains('hidden')) profileDropdown.classList.add('hidden');
     });
 });

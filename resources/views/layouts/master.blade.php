@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('page-title', 'Inicio') | {{ config('app.name', 'Uapa Salon') }}</title>
     <meta description="@yield('page-description')">
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.jpg') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +14,34 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('styles')
 </head>
-<body class="font-sans bg-bg-warm dark:bg-slate-900 text-slate-800 dark:text-slate-200 flex min-h-screen transition-colors duration-300">
-    @include('layouts.sidebar')
+<body class="bg-bg-warm dark:bg-slate-900 text-slate-900 dark:text-white font-['Montserrat'] antialiased selection:bg-pink-strong selection:text-white">
+    <div class="flex h-screen overflow-hidden">
 
-    <main class="flex-1 flex flex-col min-w-0">
-        @include('layouts.header')
+        @include('layouts.sidebar')
 
-        <div class="p-8 flex-1 overflow-y-auto flex flex-col">
-            @yield('page-content')
-            @include('layouts.example')
+        <main class="flex-1 flex flex-col min-w-0 bg-bg-warm dark:bg-slate-900 pb-16 md:pb-0 relative z-10">
+
+            @include('layouts.header')
+
+            <div class="flex-1 overflow-y-auto p-4 md:p-6 lg:flex lg:gap-6">
+                <div class="flex-1 flex flex-col space-y-6 min-w-0">
+
+                    @yield('page-content')
+                    @include('layouts.example')
+
+                </div>
+
+                @include('layouts.example-right-panel')
+
+            </div>
+
             @include('layouts.footer')
-        </div>
-    </main>
+
+        </main>
+
+        @include('layouts.bottom-navigation-bar')
+
+    </div>
 
     <script type="text/javascript" src="{{ asset('vendor/js/dashboard.js') }}"></script>
     @yield('scripts')

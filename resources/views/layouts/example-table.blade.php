@@ -1,37 +1,28 @@
-<!-- Tabla de Próximas Citas -->
-<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-    <div class="px-6 py-5 border-b border-slate-200 flex justify-between items-center">
-        <h3 class="text-lg font-semibold text-slate-800">Próximas Citas</h3>
-        <button class="text-sm font-medium text-pink-strong hover:text-pink-900">Ver todas</button>
+<div class="flex flex-col gap-3">
+    <h2 class="text-lg font-bold text-slate-800 dark:text-white">Próximas Citas</h2>
+    <div class="flex flex-col sm:flex-row gap-3">
+        <input type="text" class="w-full sm:w-64 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 focus:border-gold focus:ring-1 focus:ring-gold text-sm outline-none transition-all placeholder-slate-400" placeholder="Buscar cliente o servicio...">
+        <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-pink-strong text-white whitespace-nowrap">Todas</button>
+            <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 whitespace-nowrap hover:border-gold transition-colors">Pendientes</button>
+            <button class="px-4 py-1.5 rounded-full text-sm font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 whitespace-nowrap hover:border-gold transition-colors">Confirmadas</button>
+        </div>
     </div>
-    <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-            <thead>
-                <tr class="bg-slate-50 text-slate-500 text-sm border-b border-slate-200">
-                    <th class="px-6 py-3 font-medium">Cliente</th>
-                    <th class="px-6 py-3 font-medium">Servicio</th>
-                    <th class="px-6 py-3 font-medium">Hora</th>
-                    <th class="px-6 py-3 font-medium">Estado</th>
-                </tr>
-            </thead>
-            <tbody class="text-sm">
-                <tr class="border-b border-slate-100 hover:bg-slate-50">
-                    <td class="px-6 py-4 font-medium text-slate-800">María González</td>
-                    <td class="px-6 py-4 text-slate-600">Manicura Semipermanente</td>
-                    <td class="px-6 py-4 text-slate-600">10:00 AM</td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Confirmada</span>
-                    </td>
-                </tr>
-                <tr class="border-b border-slate-100 hover:bg-slate-50">
-                    <td class="px-6 py-4 font-medium text-slate-800">Ana Martínez</td>
-                    <td class="px-6 py-4 text-slate-600">Acrílicas + Diseño</td>
-                    <td class="px-6 py-4 text-slate-600">11:30 AM</td>
-                    <td class="px-6 py-4">
-                        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">Pendiente</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+</div>
+
+<div class="space-y-3">
+    <div class="flex items-center bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700/60 gap-4 hover:border-gold dark:hover:border-gold transition-colors cursor-pointer group shadow-sm">
+        <div class="w-20 text-center flex-shrink-0">
+            <p class="text-gold font-bold text-xl">10:00</p>
+            <p class="text-xs text-slate-500 font-medium">AM</p>
+        </div>
+        <div class="flex-1 border-l border-slate-100 dark:border-slate-700 pl-4 py-1">
+            <div class="flex justify-between items-start mb-0.5">
+                <h3 class="font-bold text-base text-slate-800 dark:text-white group-hover:text-pink-strong transition-colors">María González</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">Confirmada</span>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Corte & Balayage</p>
+            <p class="text-[11px] text-slate-400 mt-1">por Lucía</p>
+        </div>
     </div>
 </div>
